@@ -1,6 +1,11 @@
-def calculate_heuristic(board, player):
+def calculate_heuristic(board, player, verbose=False):
     """
     Calculates e(p) = (Lines open for player) - (Lines open for opponent)
+    
+    Args:
+        board: The tic-tac-toe board state
+        player: The player symbol ('X' or 'O')
+        verbose: If True, prints diagnostic output; default is False
     """
     # Determine who the opponent is
     opponent = 'O' if player == 'X' else 'X'
@@ -39,39 +44,43 @@ def calculate_heuristic(board, player):
     # 3. Calculate Heuristic
     heuristic_value = player_open_count - opponent_open_count
     
-    # --- Print details for demonstration ---
-    print(f"Player ({player}) open lines: {player_open_count}")
-    print(f"Opponent ({opponent}) open lines: {opponent_open_count}")
+    # --- Print details for demonstration (optional) ---
+    if verbose:
+        print(f"Player ({player}) open lines: {player_open_count}")
+        print(f"Opponent ({opponent}) open lines: {opponent_open_count}")
     
     return heuristic_value
 
-# ==========================================
-# Main Execution / Test Case
-# ==========================================
 
-# Representing the board: '-' is empty
-# Example State:
-#  X | - | - 
-# ---+---+---
-#  - | O | - 
-# ---+---+---
-#  X | - | - 
 
-current_board = [
-    ['X', '-', '-'],
-    ['-', 'O', '-'],
-    ['X', '-', '-']
-]
+if __name__ == "__main__":
+    # ==========================================
+    # Main Execution / Test Case
+    # ==========================================
 
-# We want to calculate heuristic for player 'X'
-current_player = 'X'
+    # Representing the board: '-' is empty
+    # Example State:
+    #  X | - | - 
+    # ---+---+---
+    #  - | O | - 
+    # ---+---+---
+    #  X | - | - 
 
-print("Current Board State:")
-for row in current_board:
-    print(row)
-print("-" * 20)
+    current_board = [
+        ['X', '-', '-'],
+        ['-', 'O', '-'],
+        ['X', '-', '-']
+    ]
 
-h_val = calculate_heuristic(current_board, current_player)
+    # We want to calculate heuristic for player 'X'
+    current_player = 'X'
 
-print("-" * 20)
-print(f"Heuristic Value e(p) = {h_val}")
+    print("Current Board State:")
+    for row in current_board:
+        print(row)
+    print("-" * 20)
+
+    h_val = calculate_heuristic(current_board, current_player, verbose=True)
+
+    print("-" * 20)
+    print(f"Heuristic Value e(p) = {h_val}")
