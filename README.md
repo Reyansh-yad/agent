@@ -63,7 +63,7 @@ This repository contains implementations of intelligent agents and classical AI 
 
 ### Prerequisites
 
-- Python 3.7 or higher
+- Python 3.10 or higher (tested on 3.13)
 - tkinter (usually included with Python)
 - Standard library modules: collections, copy, random, time
 
@@ -74,7 +74,31 @@ git clone https://github.com/Reyansh-yad/agent.git
 cd agent
 ```
 
+### Setup
+
+Create a virtual environment and install dependencies.
+
+Windows (PowerShell):
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+```
+
+macOS/Linux:
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
 ### Running the Agents
+
+**Perceptron Logic (AND/OR gates):**
+```bash
+python perceptron_logic.py
+```
+Trains a simple perceptron and prints predictions for AND and OR logic gates.
 
 **8-Puzzle Solver:**
 ```bash
