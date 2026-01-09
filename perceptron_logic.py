@@ -63,3 +63,15 @@ print("Results for OR Gate:")
 for i in range(len(X)):
   prediction=or_preceptron.predict([X[i]])
   print(f"Input: {X[i]} -> Prediction: {prediction[0]}")
+
+#-----XOR Gate Training and Testing-----
+y_xor=np.array([0,1,1,0)]
+print("---Traning XOR Gate:---")
+
+xor_preceptron =Preceptron(learning_rate=0.1,echops=10)
+xor_preceptron.train(X,y_xor)
+
+print("Results for XOR Gate:")
+for i in range(len(X)):
+  prediction=xor_preceptron.predict([X[i]])
+  print(f"Input: {X[i]} -> Prediction: {prediction[0]}")
