@@ -1,34 +1,65 @@
 import numpy as np 
 class Preceptron:
-  def _init_(self,learning_rate=0.1,epoches=10):
+  def __init__(self,learning_rate=0.1,epochs=10):
     self.lr=learning_rate
-    self.epoches=epoches
-    self.weight=None
-    self.bais=None
-  def activation_fn(slef,z):
+    self.epochs=epochs
+    self.weights=None
+    self.bias=0
+  def activation_fn(self,z):
     return 1 if z>=0 else 0
-  def train(slef,X,y):
-    n_smaples,n_features = X.shape
+  def train(self,X,y):
+    n_samples,n_features = X.shape
     self.weights=np.zeros(n_features)
     self.bias =0
-    for epoches in range(self.epoches):
-      print(f"-----{epoches+1}-------")
+    for epoch in range(self.epochs):
+      print(f"-----Epoch {epoch+1}-------")
       for idx,x_i in enumerate(X):
-        linear_output=np.dot(x_i,self.weights)+slef.bais
+        linear_output=np.dot(x_i,self.weights)+self.bias
         y_predicted=self.activation_fn(linear_output)
-        update = self.lr*(y[idx]-predicted)
-        slef.weights +=update * x_i
-        slef.bais +=update
-    
-    def predict(self,X):
-      predictions =[]
-      for x_i in X:
-        linear_ouput = np.dot(x_i, self.weights)+slef.bias
-        y_predicted =self.activation_fn(linear_output)
-        predictions.append(y_predicted)
-      return np.array(predictions)
+        update = self.lr*(y[idx]-y_predicted)
+        self.weights +=update * x_i
+        self.bias +=update
+
+  def predict(self,X):
+    X = np.array(X)
+    predictions =[]
+    for x_i in X:
+      linear_output = np.dot(x_i, self.weights)+self.bias
+      y_predicted =self.activation_fn(linear_output)
+      predictions.append(y_predicted)
+    return np.array(predictions)
+#-----AND Gate Training and Testing-----    
+X = np.array([
+  [0,0],
+  [0,1],
+  [1,0],
+  [1,1]
+])
+
+y_and =np.array([0,0,0,1])
+print("--Training AND Gate--")
+and_preceptron =Preceptron(learning_rate=0.1,epochs=10)
+and_preceptron.train(X,y_and)
+
+print("Results for And Gate:")
+for i in range(len(X)):
+  prediction= and_preceptron.predict([X[i]])
+  print(f"Input: {X[i]} -> Prediction: {prediction[0]}")
 
 
 
 
+#-----OR Gate Training and Testing-----
   
+y_or = np.array([0,1,1,1])
+
+print("--Training OR Gate--")
+
+or_preceptron =Preceptron(learning_rate=0.1,epochs=10)
+or_preceptron.train(X,y_or)
+
+
+print("Results for OR Gate:")
+for i in range(len(X)):
+  prediction=or_preceptron.predict([X[i]])
+  print(f"Input: {X[i]} -> Prediction: {prediction[0]}")
