@@ -11,6 +11,9 @@ This lab covers core machine learning techniques:
 - **K-Nearest Neighbours (KNN)** — instance-based lazy learner
 - **K-Means Clustering** — unsupervised centroid-based clustering
 - **Support Vector Machine (SVM)** — maximum-margin linear classifier via scikit-learn
+- **Hopfield Network** — recurrent associative memory for noisy pattern recovery
+- **Bidirectional Associative Memory (BAM)** — two-way pattern association
+- **Odd/Even Classifier** — perceptron detecting number parity
 
 ## Files
 
@@ -21,6 +24,9 @@ This lab covers core machine learning techniques:
 | `KNN.py` | K-Nearest Neighbours classifier built from scratch |
 | `kmean.py` | K-Means clustering algorithm built from scratch |
 | `svm.py` | Linear SVM classifier using scikit-learn |
+| `Hopfield.py` | Hopfield network for bipolar pattern storage and noisy-input recovery |
+| `Bi-dir.py` | Bidirectional Associative Memory (BAM) for associating pattern pairs |
+| `odd&even.py` | Perceptron-based classifier for odd/even number detection |
 
 ## Program Details
 
@@ -134,6 +140,66 @@ Accuracy: 1.0
 
 ---
 
+### `Hopfield.py` — Hopfield Network
+
+A single-layer recurrent associative memory that stores a bipolar pattern as a weight matrix and recovers it from a noisy input.
+
+**Algorithm:**
+1. Compute weight matrix: `W = pattern ⊗ pattern` (outer product), zero diagonal
+2. Iterative update: `state = sign(W · state)` until convergence
+
+**Example output:**
+```
+Weight Matrix:
+ [[ 0 -1  1 -1]
+ [-1  0 -1  1]
+ [ 1 -1  0 -1]
+ [-1  1 -1  0]]
+Recovered Pattern: [ 1. -1.  1. -1.]
+```
+
+---
+
+### `Bi-dir.py` — Bidirectional Associative Memory (BAM)
+
+Associates two bipolar pattern vectors so that each can be recalled from the other using a shared weight matrix.
+
+**Algorithm:**
+- Weight matrix: `W = Xᵀ · Y`
+- Recall Y from X: `y = sign(x · W)`
+- Recall X from Y: `x = sign(y · Wᵀ)`
+
+**Example output:**
+```
+Weight Matrix:
+ [[ 1  1 -1]
+ [-1 -1  1]
+ [ 1  1 -1]]
+Recall Phone from ID: [[ 1.  1. -1.]]
+Recall ID from Phone: [[ 1. -1.  1.]]
+```
+
+---
+
+### `odd&even.py` — Odd/Even Perceptron Classifier
+
+A single-neuron perceptron that learns to classify numbers as odd or even based on the last binary digit.
+
+**Key Components:**
+- Trains on input `{0 → even, 1 → odd}` using the perceptron learning rule
+- Sign activation: outputs `1` (even) or `-1` (odd)
+- Accepts user input at runtime for live classification
+
+**Example output:**
+```
+Trained weight: [0.1]
+Trained bias: 0.1
+Enter number: 4
+Even Number
+```
+
+---
+
 ## Getting Started
 
 ### Prerequisites
@@ -172,6 +238,15 @@ python lab-3/kmean.py
 
 # Support Vector Machine
 python lab-3/svm.py
+
+# Hopfield network pattern recovery
+python lab-3/Hopfield.py
+
+# Bidirectional Associative Memory
+python lab-3/Bi-dir.py
+
+# Odd/Even perceptron classifier
+python "lab-3/odd&even.py"
 ```
 
 ## Key Concepts
@@ -183,6 +258,9 @@ python lab-3/svm.py
 | Instance-based learning | KNN | `KNN.py` |
 | Unsupervised clustering | K-Means | `kmean.py` |
 | Maximum-margin classifier | SVM | `svm.py` |
+| Recurrent associative memory | Hopfield Network | `Hopfield.py` |
+| Bidirectional associative memory | BAM | `Bi-dir.py` |
+| Binary classification (perceptron) | Odd/Even | `odd&even.py` |
 
 ## Dependencies
 
