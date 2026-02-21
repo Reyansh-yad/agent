@@ -134,7 +134,7 @@ Uses scikit-learn's `SVC` with a linear kernel to classify a small dataset.
 
 **Example output:**
 ```
-Predicted: [1]
+Predicted: [0 0]
 Accuracy: 1.0
 ```
 
@@ -155,7 +155,7 @@ Weight Matrix:
  [-1  0 -1  1]
  [ 1 -1  0 -1]
  [-1  1 -1  0]]
-Recovered Pattern: [ 1. -1.  1. -1.]
+Recovered Pattern: [ 1 -1  1 -1]
 ```
 
 ---
@@ -175,8 +175,8 @@ Weight Matrix:
  [[ 1  1 -1]
  [-1 -1  1]
  [ 1  1 -1]]
-Recall Phone from ID: [[ 1.  1. -1.]]
-Recall ID from Phone: [[ 1. -1.  1.]]
+Recall Phone from ID: [[ 1  1 -1]]
+Recall ID from Phone: [[ 1 -1  1]]
 ```
 
 ---

@@ -106,11 +106,46 @@ python 8_puzzels.py
 ```
 Solves the 8-puzzle and displays the solution path with visualization.
 
+**Sample Output:**
+```
+Solving...
+Solution found in 2 moves:
+RIGHT -> DOWN
+
+Visualizing Path:
+[1, 2, 3]
+[4, 0, 5]
+[7, 8, 6]
+
+Move: RIGHT
+[1, 2, 3]
+[4, 5, 0]
+[7, 8, 6]
+
+Move: DOWN
+[1, 2, 3]
+[4, 5, 6]
+[7, 8, 0]
+```
+
 **Tic-Tac-Toe Heuristic Evaluator:**
 ```bash
 python Tic_Tac_Toe.py
 ```
 Evaluates board positions and prints heuristic values. Use `verbose=True` for diagnostic output.
+
+**Sample Output:**
+```
+Current Board State:
+['X', '-', '-']
+['-', 'O', '-']
+['X', '-', '-']
+--------------------
+Player (X) open lines: 4
+Opponent (O) open lines: 3
+--------------------
+Heuristic Value e(p) = 1
+```
 
 **Boltzmann Temperature Simulator:**
 ```bash
@@ -118,17 +153,29 @@ python temperature.py
 ```
 Runs temperature annealing simulation and displays probability distribution changes with interactive plots.
 
+**Sample Output:**
+```
+Temp (T)     P(Node 0)       P(Node 1)
+1.0000       0.000000        0.000045
+0.9500       0.000000        0.000027
+0.9025       0.000000        0.000015
+...
+0.1238       0.000000        0.000000
+0.1176       0.000000        0.000000
+(A matplotlib plot window is also displayed.)
+```
+
 **Block World Agent:**
 ```bash
 python Block_World.py
 ```
+Launches an interactive GUI window showing the block-stacking planning agent in action.
 
 **Vacuum Agent:**
 ```bash
 python vacuum.py
 ```
-
-Block World and Vacuum agents launch interactive GUI windows showing agents in action with real-time visualization.
+Launches an interactive GUI window showing the vacuum cleaner agent cleaning the room in real time.
 
 ## Architecture Details
 
