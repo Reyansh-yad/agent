@@ -62,8 +62,11 @@ From-scratch implementations of fundamental ML algorithms using NumPy, plus a sc
 | `KNN.py` | K-Nearest Neighbours classifier |
 | `kmean.py` | K-Means clustering |
 | `svm.py` | Linear SVM via scikit-learn |
+| `Hopfield.py` | Hopfield network for bipolar pattern recovery |
+| `Bi-dir.py` | Bidirectional Associative Memory (BAM) |
+| `odd&even.py` | Perceptron classifier for odd/even detection |
 
-**Concepts:** linear classification, backpropagation, instance-based learning, unsupervised clustering, maximum-margin classifiers.
+**Concepts:** linear classification, backpropagation, instance-based learning, unsupervised clustering, maximum-margin classifiers, Hopfield networks, bidirectional associative memory.
 
 ---
 
