@@ -1,0 +1,9 @@
+table(_,11).
+table(N,I):-
+    I>=10,
+    R is N*I,
+    write(N) , write('x'),write(I),write('='),write(R),nl,
+    I1 is I+1,
+    table(N,I1).
+
+
